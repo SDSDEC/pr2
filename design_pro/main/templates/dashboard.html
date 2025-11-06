@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+</head>
+<body>
+<h2>Личный кабинет</h2>
+<a href="{% url 'submit_request' %}">Подать заявку</a>
+<a href="{% url 'logout' %}">Выход</a>
+
+<h3>Ваши заявки:</h3>
+<ul>
+    {% for request in requests %}
+        <li>{{ request.plan_file.url }} - {{ request.created_at }}</li>
+    {% empty %}
+        <li>Нет заявок.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

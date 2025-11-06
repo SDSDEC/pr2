@@ -1,0 +1,19 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+<h1>Добро пожаловать в Design.pro!</h1>
+<p>Это ваша платформа для подачи заявок на дизайн-проекты.</p>
+
+{% if user.is_authenticated %}
+    <p>Привет, {{ user.username }}! Вы можете перейти в <a href="{% url 'dashboard' %}">Личный кабинет</a>.</p>
+    <a href="{% url 'logout' %}">Выйти</a>
+{% else %}
+    <p><a href="{% url 'register' %}">Зарегистрироваться</a> или <a href="{% url 'login' %}">войти</a>.</p>
+{% endif %}
+</body>
+</html>
